@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://cf75ya45p20rk"]
+
+[ext_resource type="PackedScene" uid="uid://2e0meemxqr1k" path="res://game.tscn" id="1_exulw"]
+[ext_resource type="PackedScene" uid="uid://dvpgdatrnvo0u" path="res://tower.tscn" id="2_bpjuw"]
+[ext_resource type="Texture2D" uid="uid://ctw86wkpo5sui" path="res://Assets/Tiles/tileSand_roadCornerLL.png" id="2_tytwm"]
+[ext_resource type="Texture2D" uid="uid://b67wqghjkmdqx" path="res://Assets/Tiles/tileSand_roadNorth.png" id="3_fqnr4"]
+[ext_resource type="PackedScene" uid="uid://bllg4o4c6jrxc" path="res://bullet.tscn" id="3_pptqa"]
+[ext_resource type="Texture2D" uid="uid://dgj7ok3bp1ktn" path="res://Assets/Tiles/tileSand_roadCornerUL.png" id="4_p0bfn"]
+[ext_resource type="PackedScene" uid="uid://dsx63d1iqjjxq" path="res://monkey.tscn" id="4_w4b7g"]
+[ext_resource type="Texture2D" uid="uid://cjsnh1b4ty17y" path="res://Assets/Tiles/tileSand_roadEast.png" id="5_16gmt"]
+[ext_resource type="Texture2D" uid="uid://c3frvssl6kdxd" path="res://Assets/Tiles/tileGrass_roadTransitionE.png" id="6_bpjuw"]
+[ext_resource type="Texture2D" uid="uid://pe5kl6weg70v" path="res://Assets/Tiles/tileSand1.png" id="7_pptqa"]
+[ext_resource type="Texture2D" uid="uid://bnlveo3nr5i2e" path="res://Assets/Tiles/tileGrass_transitionE.png" id="8_w4b7g"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game" parent="." instance=ExtResource("1_exulw")]
+
+[node name="Map" type="TileMapLayer" parent="Game"]
+
+[node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
+
+[node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
+
+[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
+position = Vector2(32, 32)
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 648.0
+columns = 3
+
+[node name="TileSandRoadCornerLl" type="Sprite2D" parent="GridContainer"]
+position = Vector2(736, 96)
+texture = ExtResource("2_tytwm")
+
+[node name="TileSandRoadNorth" type="Sprite2D" parent="GridContainer"]
+position = Vector2(736, 160)
+texture = ExtResource("3_fqnr4")
+
+[node name="TileSandRoadCornerUl" type="Sprite2D" parent="GridContainer"]
+position = Vector2(736, 224)
+texture = ExtResource("4_p0bfn")
+
+[node name="TileSandRoadEast" type="Sprite2D" parent="GridContainer"]
+position = Vector2(672, 96)
+texture = ExtResource("5_16gmt")
+
+[node name="TileGrassRoadTransitionE" type="Sprite2D" parent="GridContainer"]
+position = Vector2(608, 96)
+texture = ExtResource("6_bpjuw")
+
+[node name="TileSand1" type="Sprite2D" parent="GridContainer"]
+position = Vector2(672, 160)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSandRoadEast2" type="Sprite2D" parent="GridContainer"]
+position = Vector2(672, 224)
+texture = ExtResource("5_16gmt")
+
+[node name="TileGrassRoadTransitionE2" type="Sprite2D" parent="GridContainer"]
+position = Vector2(608, 224)
+texture = ExtResource("6_bpjuw")
+
+[node name="TileGrassTransitionE" type="Sprite2D" parent="GridContainer"]
+position = Vector2(608, 160)
+texture = ExtResource("8_w4b7g")

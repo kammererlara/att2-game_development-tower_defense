@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bllg4o4c6jrxc"]
+
+[ext_resource type="Script" uid="uid://cc6srdu3v43ma" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://cdat7ghe0eexd" path="res://Assets/Bullets/bulletBlue1.png" id="2_t4vbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(4, 10)
+
+[node name="BulletBlue" type="Area2D"]
+script = ExtResource("1_v8qja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="BulletBlue1" type="Sprite2D" parent="."]
+texture = ExtResource("2_t4vbm")
