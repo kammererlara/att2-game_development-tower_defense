@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf75ya45p20rk"]
+[gd_scene load_steps=15 format=3 uid="uid://cf75ya45p20rk"]
 
 [ext_resource type="PackedScene" uid="uid://2e0meemxqr1k" path="res://game.tscn" id="1_exulw"]
 [ext_resource type="PackedScene" uid="uid://dvpgdatrnvo0u" path="res://tower.tscn" id="2_bpjuw"]
@@ -9,19 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://dsx63d1iqjjxq" path="res://monkey.tscn" id="4_w4b7g"]
 [ext_resource type="Texture2D" uid="uid://cjsnh1b4ty17y" path="res://Assets/Tiles/tileSand_roadEast.png" id="5_16gmt"]
 [ext_resource type="Script" uid="uid://b5boh0kui14qa" path="res://animal.gd" id="5_pptqa"]
+[ext_resource type="Texture2D" uid="uid://7ge3ipolu1sb" path="res://Assets/Tanks/tankDark_barrel1.png" id="6_8j1l6"]
 [ext_resource type="Texture2D" uid="uid://c3frvssl6kdxd" path="res://Assets/Tiles/tileGrass_roadTransitionE.png" id="6_bpjuw"]
 [ext_resource type="Texture2D" uid="uid://pe5kl6weg70v" path="res://Assets/Tiles/tileSand1.png" id="7_pptqa"]
 [ext_resource type="Texture2D" uid="uid://bnlveo3nr5i2e" path="res://Assets/Tiles/tileGrass_transitionE.png" id="8_w4b7g"]
+[ext_resource type="PackedScene" uid="uid://iygly3hgx3dh" path="res://blackTankPanel.tscn" id="14_vo25w"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="Game" parent="." instance=ExtResource("1_exulw")]
+visible = false
 
 [node name="Map" type="TileMapLayer" parent="Game"]
 
@@ -35,22 +34,37 @@ position = Vector2(-392, -144)
 position = Vector2(1224, 544)
 script = ExtResource("5_pptqa")
 
-[node name="Container" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1014.0
+offset_right = 1153.0
+offset_bottom = 648.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="Round Counter" type="Label" parent="Container"]
+layout_mode = 2
+text = "Round: "
+
+[node name="Score Display" type="Label" parent="Container"]
+layout_mode = 2
+text = "Score"
+
+[node name="GridContainer" type="GridContainer" parent="Container"]
+layout_mode = 2
+columns = 2
+
+[node name="TankBlack" type="TextureRect" parent="Container/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_8j1l6")
+
 [node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = -1760.0
-offset_top = -48.0
-offset_right = -800.0
-offset_bottom = 600.0
+visible = false
+layout_mode = 2
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 966.0
+offset_bottom = 659.0
 columns = 3
 
 [node name="TileSandRoadCornerLl" type="Sprite2D" parent="GridContainer"]
@@ -66,7 +80,7 @@ position = Vector2(736, 224)
 texture = ExtResource("4_p0bfn")
 
 [node name="TileSandRoadEast" type="Sprite2D" parent="GridContainer"]
-position = Vector2(672, 96)
+position = Vector2(611, 1)
 texture = ExtResource("5_16gmt")
 
 [node name="TileGrassRoadTransitionE" type="Sprite2D" parent="GridContainer"]
@@ -88,3 +102,6 @@ texture = ExtResource("6_bpjuw")
 [node name="TileGrassTransitionE" type="Sprite2D" parent="GridContainer"]
 position = Vector2(608, 160)
 texture = ExtResource("8_w4b7g")
+
+[node name="Panel" parent="." instance=ExtResource("14_vo25w")]
+layout_mode = 0
