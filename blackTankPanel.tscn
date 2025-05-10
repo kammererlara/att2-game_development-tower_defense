@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://iygly3hgx3dh"]
+
+[ext_resource type="Texture2D" uid="uid://bw1fx2rslebhf" path="res://Assets/Tanks/tankBody_dark.png" id="1_p1ufp"]
+[ext_resource type="Texture2D" uid="uid://7ge3ipolu1sb" path="res://Assets/Tanks/tankDark_barrel1.png" id="2_kiico"]
+
+[node name="Panel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TankBodyDark" type="Sprite2D" parent="."]
+position = Vector2(323, 383)
+texture = ExtResource("1_p1ufp")
+
+[node name="TankDarkBarrel1" type="Sprite2D" parent="."]
+position = Vector2(323, 378)
+texture = ExtResource("2_kiico")
