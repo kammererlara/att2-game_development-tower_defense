@@ -20,8 +20,9 @@
 size = Vector2(38.4, 21.6)
 
 [sub_resource type="Curve2D" id="Curve2D_vo25w"]
+bake_interval = 4.79
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1200, 600, 0, 0, 0, 0, 50, 600, 0, 0, 0, 0, 50, 350, 0, 0, 0, 0, 1100, 350, 0, 0, 0, 0, 1100, 50, 0, 0, 0, 0, 0, 50)
+"points": PackedVector2Array(0, 0, 0, 0, 1148, 592, 0, 0, 0, 0, 94, 589, 0, 0, 0, 0, 93, 389, 0, 0, 0, 0, 884, 388, 0, 0, 0, 0, 881, 96, 0, 0, 0, 0, -75, 99)
 }
 point_count = 6
 
@@ -60,8 +61,8 @@ scale = Vector2(0.0333333, 0.0333333)
 curve = SubResource("Curve2D_vo25w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
-position = Vector2(1200, 600)
-rotation = 3.14159
+position = Vector2(1148, 592)
+rotation = -3.13875
 
 [node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
 position = Vector2(752, 208)

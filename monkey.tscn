@@ -7,9 +7,9 @@ radius = 24.0
 
 [node name="Monkey" type="Area2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0500s")
-
 [node name="Monkey" type="Sprite2D" parent="."]
 scale = Vector2(0.162338, 0.188716)
 texture = ExtResource("1_to385")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0500s")

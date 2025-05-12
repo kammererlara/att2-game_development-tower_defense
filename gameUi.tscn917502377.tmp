@@ -21,7 +21,7 @@ size = Vector2(38.4, 21.6)
 
 [sub_resource type="Curve2D" id="Curve2D_vo25w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1200, 600, 0, 0, 0, 0, 50, 600, 0, 0, 0, 0, 50, 350, 0, 0, 0, 0, 1100, 350, 0, 0, 0, 0, 1100, 50, 0, 0, 0, 0, 0, 50)
+"points": PackedVector2Array(0, 0, 0, 0, 1212, 592, 0, 0, 0, 0, 94, 589, 0, 0, 0, 0, 93, 389, 0, 0, 0, 0, 884, 388, 0, 0, 0, 0, 881, 96, 0, 0, 0, 0, -75, 99)
 }
 point_count = 6
 
@@ -33,7 +33,6 @@ anchors_preset = 0
 script = ExtResource("2_vo25w")
 
 [node name="Map" type="TileMapLayer" parent="Game"]
-visible = false
 
 [node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
 position = Vector2(752, 208)
@@ -42,31 +41,28 @@ position = Vector2(752, 208)
 position = Vector2(-392, -144)
 
 [node name="Map2" type="TileMap" parent="Game"]
-visible = false
 format = 2
 
-[node name="Map3" type="Area2D" parent="Game"]
-visible = false
+[node name="Area2D" type="Area2D" parent="Game"]
 position = Vector2(808, -448)
 scale = Vector2(30, 30)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Map3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Area2D"]
 position = Vector2(-7.73333, 25.7333)
 shape = SubResource("RectangleShape2D_vo25w")
-
-[node name="Path2D" type="Path2D" parent="Game/Map3"]
-position = Vector2(-26.9333, 14.9333)
-scale = Vector2(0.0333333, 0.0333333)
-curve = SubResource("Curve2D_vo25w")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
-position = Vector2(1200, 600)
-rotation = 3.14159
 
 [node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
 position = Vector2(752, 208)
 
-[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
+[node name="Path2D" type="Path2D" parent="Game"]
+curve = SubResource("Curve2D_vo25w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Game/Path2D"]
+position = Vector2(1212, 592)
+rotation = -3.13891
+
+[node name="Monkey" parent="Game/Path2D/PathFollow2D" instance=ExtResource("4_w4b7g")]
+position = Vector2(1224, 544)
 script = ExtResource("5_pptqa")
 
 [node name="Container" type="Container" parent="."]

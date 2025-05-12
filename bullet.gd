@@ -15,7 +15,6 @@ func setup(origin: Vector2, target_node: Node2D):
 	if target:
 		direction = (target.global_position - origin).normalized()
 		rotation = direction.angle() + deg_to_rad(270)
-		#print(rotation)
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
@@ -24,8 +23,5 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_area_entered(area):
-	#if area == _tower:
-		#return
-	
 	if area is Animal:
 		queue_free()
