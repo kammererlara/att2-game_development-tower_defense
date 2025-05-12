@@ -1,7 +1,7 @@
 extends Area2D
 class_name Animal
 
-var speed: float = 8 * 100000.0
+var speed: float = 2 * 100000.0
 var progress: float = 0.0
 @onready var path_2d: Path2D = $"../Map3/Path2D"
 @onready var path_follow_2d: PathFollow2D = $"../Map3/Path2D/PathFollow2D"
@@ -21,5 +21,5 @@ func _on_area_entered(area):
 		#hide()
 		#await audio.finished
 		#await get_tree().create_timer(1).timeout	#warten zum löschen
-		#queue_free()
-		print('Hit')
+		queue_free()
+		#print('Hit')

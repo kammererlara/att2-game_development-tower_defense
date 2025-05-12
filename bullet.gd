@@ -17,10 +17,7 @@ func setup(origin: Vector2, target_node: Node2D):
 		rotation = direction.angle() + deg_to_rad(270)
 
 func _process(delta: float) -> void:
-	if is_instance_valid(target):
-		position += direction * speed * delta
-	else:
-		queue_free()
+	position += direction * speed * delta
 
 func _on_area_entered(area):
 	if area is Animal:
