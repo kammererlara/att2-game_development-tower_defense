@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvem47u1iqgec"]
+
+[ext_resource type="PackedScene" uid="uid://iygly3hgx3dh" path="res://blackTankPanel.tscn" id="1_egcbe"]
+[ext_resource type="PackedScene" uid="uid://b0troudbkvsoe" path="res://blueTankPanel.tscn" id="2_vrorr"]
+[ext_resource type="PackedScene" uid="uid://1ek4ve0t8pq4" path="res://greenTankPanel.tscn" id="3_8lg6a"]
+[ext_resource type="PackedScene" uid="uid://cumkqckei0ksp" path="res://redTankPanel.tscn" id="4_wasep"]
+[ext_resource type="PackedScene" uid="uid://c04e5qoywhku8" path="res://whiteTankPanel.tscn" id="5_nwn8r"]
+[ext_resource type="PackedScene" uid="uid://dikbbb80mavq5" path="res://doubleBlackTank.tscn" id="6_koawl"]
+[ext_resource type="PackedScene" uid="uid://dgxjuc16h357v" path="res://eliteDoubleTank.tscn" id="7_lxmog"]
+
+[sub_resource type="Theme" id="Theme_vrorr"]
+
+[node name="Container" type="MarginContainer"]
+offset_right = 126.0
+offset_bottom = 640.0
+theme = SubResource("Theme_vrorr")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Tank Menu" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="Round Counter" type="Label" parent="Tank Menu"]
+layout_mode = 2
+text = "Round: "
+
+[node name="Score Display" type="Label" parent="Tank Menu"]
+layout_mode = 2
+text = "Score"
+
+[node name="Margin_Tank Menu" type="GridContainer" parent="Tank Menu"]
+custom_minimum_size = Vector2(100, 590)
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Black Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("1_egcbe")]
+layout_mode = 2
+
+[node name="Blue Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("2_vrorr")]
+layout_mode = 2
+
+[node name="Green Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("3_8lg6a")]
+layout_mode = 2
+
+[node name="Red Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("4_wasep")]
+layout_mode = 2
+
+[node name="White Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("5_nwn8r")]
+layout_mode = 2
+
+[node name="Double Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("6_koawl")]
+layout_mode = 2
+
+[node name="Elite Double Tank Panel" parent="Tank Menu/Margin_Tank Menu" instance=ExtResource("7_lxmog")]
+layout_mode = 2

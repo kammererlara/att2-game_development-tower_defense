@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cf75ya45p20rk"]
+[gd_scene load_steps=19 format=3 uid="uid://cf75ya45p20rk"]
 
 [ext_resource type="PackedScene" uid="uid://2e0meemxqr1k" path="res://game.tscn" id="1_exulw"]
 [ext_resource type="PackedScene" uid="uid://dvpgdatrnvo0u" path="res://tower.tscn" id="2_bpjuw"]
@@ -10,18 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://dsx63d1iqjjxq" path="res://monkey.tscn" id="4_w4b7g"]
 [ext_resource type="Texture2D" uid="uid://cjsnh1b4ty17y" path="res://Assets/Tiles/tileSand_roadEast.png" id="5_16gmt"]
 [ext_resource type="Script" uid="uid://b5boh0kui14qa" path="res://animal.gd" id="5_pptqa"]
-[ext_resource type="Texture2D" uid="uid://7ge3ipolu1sb" path="res://Assets/Tanks/tankDark_barrel1.png" id="6_8j1l6"]
-[ext_resource type="Texture2D" uid="uid://c3frvssl6kdxd" path="res://Assets/Tiles/tileGrass_roadTransitionE.png" id="6_bpjuw"]
+[ext_resource type="PackedScene" uid="uid://bvem47u1iqgec" path="res://sidemenu.tscn" id="7_8j1l6"]
 [ext_resource type="Texture2D" uid="uid://pe5kl6weg70v" path="res://Assets/Tiles/tileSand1.png" id="7_pptqa"]
-[ext_resource type="Texture2D" uid="uid://bnlveo3nr5i2e" path="res://Assets/Tiles/tileGrass_transitionE.png" id="8_w4b7g"]
-[ext_resource type="PackedScene" uid="uid://iygly3hgx3dh" path="res://blackTankPanel.tscn" id="14_vo25w"]
+[ext_resource type="Texture2D" uid="uid://ducmk87eu4gyj" path="res://Assets/Tiles/tileSand_roadCornerUR.png" id="13_3ay84"]
+[ext_resource type="Texture2D" uid="uid://b45qkb12wqw1g" path="res://Assets/Tiles/tileSand_roadCornerLR.png" id="14_pl1ei"]
+[ext_resource type="Texture2D" uid="uid://c3neawwvnd2i6" path="res://Assets/Tiles/tileGrass_transitionS.png" id="15_0lip6"]
+[ext_resource type="Texture2D" uid="uid://dtmb8agf1lyrf" path="res://Assets/Tiles/tileGrass_transitionN.png" id="16_jq8a3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo25w"]
 size = Vector2(38.4, 21.6)
 
 [sub_resource type="Curve2D" id="Curve2D_vo25w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1200, 600, 0, 0, 0, 0, 50, 600, 0, 0, 0, 0, 50, 350, 0, 0, 0, 0, 1100, 350, 0, 0, 0, 0, 1100, 50, 0, 0, 0, 0, 0, 50)
+"points": PackedVector2Array(0, 0, 0, 0, 1110.45, 544.002, 0, 0, 0, 0, 116.417, 544.002, 0, 0, 0, 0, 116.417, 352.001, 0, 0, 0, 0, 1038.81, 352.001, 0, 0, 0, 0, 1038.81, 160.001, 0, 0, 0, 0, -0.00109317, 160.001)
 }
 point_count = 6
 
@@ -33,118 +34,696 @@ anchors_preset = 0
 script = ExtResource("2_vo25w")
 
 [node name="Map" type="TileMapLayer" parent="Game"]
-visible = false
 
 [node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
+visible = false
 position = Vector2(752, 208)
 
 [node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
+visible = false
 position = Vector2(-392, -144)
 
 [node name="Map2" type="TileMap" parent="Game"]
-visible = false
 format = 2
 
 [node name="Map3" type="Area2D" parent="Game"]
-visible = false
 position = Vector2(808, -448)
 scale = Vector2(30, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Map3"]
+visible = false
 position = Vector2(-7.73333, 25.7333)
 shape = SubResource("RectangleShape2D_vo25w")
 
 [node name="Path2D" type="Path2D" parent="Game/Map3"]
 position = Vector2(-26.9333, 14.9333)
-scale = Vector2(0.0333333, 0.0333333)
+scale = Vector2(0.0297777, 0.0333333)
 curve = SubResource("Curve2D_vo25w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
-position = Vector2(1200, 600)
+position = Vector2(1110.45, 544.002)
 rotation = 3.14159
 
 [node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
+visible = false
 position = Vector2(752, 208)
 
 [node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
+visible = false
 script = ExtResource("5_pptqa")
 
-[node name="Container" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Container" parent="." instance=ExtResource("7_8j1l6")]
+layout_mode = 0
+offset_left = 1024.0
+offset_right = 1154.0
+offset_bottom = 654.0
 
-[node name="Round Counter" type="Label" parent="Container"]
+[node name="Old map" type="GridContainer" parent="."]
 layout_mode = 2
-text = "Round: "
-
-[node name="Score Display" type="Label" parent="Container"]
-layout_mode = 2
-text = "Score"
-
-[node name="GridContainer" type="GridContainer" parent="Container"]
-layout_mode = 2
-
-[node name="TankBlack" type="TextureRect" parent="Container/GridContainer"]
-layout_mode = 2
-texture = ExtResource("6_8j1l6")
-
-[node name="Container_MarginContainer#GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(100, 590)
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 2
-
-[node name="GridContainer" type="GridContainer" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 6.0
-offset_top = 11.0
-offset_right = 966.0
-offset_bottom = 659.0
+offset_right = 1024.0
+offset_bottom = 640.0
 columns = 3
 
-[node name="TileSandRoadCornerLl" type="Sprite2D" parent="GridContainer"]
-position = Vector2(736, 96)
+[node name="TileSandRoadCornerLl" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 160)
 texture = ExtResource("2_tytwm")
 
-[node name="TileSandRoadNorth" type="Sprite2D" parent="GridContainer"]
-position = Vector2(736, 160)
+[node name="TileSandRoadNorth" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 480)
 texture = ExtResource("3_fqnr4")
 
-[node name="TileSandRoadCornerUl" type="Sprite2D" parent="GridContainer"]
-position = Vector2(736, 224)
+[node name="TileSandRoadNorth2" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 416)
+texture = ExtResource("3_fqnr4")
+
+[node name="TileSandRoadNorth3" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 288)
+texture = ExtResource("3_fqnr4")
+
+[node name="TileSandRoadNorth4" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 224)
+texture = ExtResource("3_fqnr4")
+
+[node name="TileSandRoadCornerUl" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 352)
 texture = ExtResource("4_p0bfn")
 
-[node name="TileSandRoadEast" type="Sprite2D" parent="GridContainer"]
-position = Vector2(611, 1)
+[node name="TileSandRoadEast" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 544)
 texture = ExtResource("5_16gmt")
 
-[node name="TileGrassRoadTransitionE" type="Sprite2D" parent="GridContainer"]
-position = Vector2(608, 96)
-texture = ExtResource("6_bpjuw")
+[node name="TileSandRoadEast13" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 544)
+texture = ExtResource("5_16gmt")
 
-[node name="TileSand1" type="Sprite2D" parent="GridContainer"]
-position = Vector2(672, 160)
+[node name="TileSandRoadEast14" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast15" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast16" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSand1" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 480)
 texture = ExtResource("7_pptqa")
 
-[node name="TileSandRoadEast2" type="Sprite2D" parent="GridContainer"]
+[node name="TileSand2" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand3" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand4" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand5" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand6" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand7" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand8" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand9" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand10" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand11" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand12" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand13" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand14" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand15" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand16" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand17" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand18" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand19" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand20" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand21" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand22" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand23" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand24" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand25" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand26" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand57" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand58" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand71" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand72" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand73" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 160)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand74" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand75" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand76" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 352)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand77" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 352)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand78" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand79" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 480)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand80" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 544)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand59" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand60" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand61" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand62" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand63" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand64" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand65" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand66" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand67" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand68" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand69" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand70" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 96)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand27" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand28" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 416)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand29" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand30" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand31" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand32" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand33" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand34" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand35" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand36" type="Sprite2D" parent="Old map"]
 position = Vector2(672, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand37" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand38" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand39" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand40" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand41" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand42" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand43" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand44" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand45" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand46" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand47" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand48" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand49" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand50" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand51" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand52" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand53" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand54" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 288)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand55" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSand56" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 224)
+texture = ExtResource("7_pptqa")
+
+[node name="TileSandRoadEast4" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 544)
 texture = ExtResource("5_16gmt")
 
-[node name="TileGrassRoadTransitionE2" type="Sprite2D" parent="GridContainer"]
-position = Vector2(608, 224)
-texture = ExtResource("6_bpjuw")
+[node name="TileSandRoadEast5" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 544)
+texture = ExtResource("5_16gmt")
 
-[node name="TileGrassTransitionE" type="Sprite2D" parent="GridContainer"]
+[node name="TileSandRoadEast6" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast7" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast8" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast9" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast10" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast11" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast12" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 544)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast19" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast20" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast21" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast22" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast23" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast28" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast29" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast43" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast44" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast30" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast31" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast32" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast33" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast34" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 352)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast24" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast25" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast26" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast27" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast35" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast36" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast37" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast38" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast39" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast40" type="Sprite2D" parent="Old map"]
 position = Vector2(608, 160)
-texture = ExtResource("8_w4b7g")
+texture = ExtResource("5_16gmt")
 
-[node name="Panel" parent="." instance=ExtResource("14_vo25w")]
-layout_mode = 0
+[node name="TileSandRoadEast41" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadEast42" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 160)
+texture = ExtResource("5_16gmt")
+
+[node name="TileSandRoadCornerUr" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 544)
+texture = ExtResource("13_3ay84")
+
+[node name="TileSandRoadCornerLr" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 352)
+texture = ExtResource("14_pl1ei")
+
+[node name="TileGrassTransitionS" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS2" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS12" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS15" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS16" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS13" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS14" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS3" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS4" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS5" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS6" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS7" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS8" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS9" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS10" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionS11" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 32)
+texture = ExtResource("15_0lip6")
+
+[node name="TileGrassTransitionN" type="Sprite2D" parent="Old map"]
+position = Vector2(32, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN2" type="Sprite2D" parent="Old map"]
+position = Vector2(96, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN3" type="Sprite2D" parent="Old map"]
+position = Vector2(160, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN4" type="Sprite2D" parent="Old map"]
+position = Vector2(224, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN5" type="Sprite2D" parent="Old map"]
+position = Vector2(288, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN6" type="Sprite2D" parent="Old map"]
+position = Vector2(352, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN7" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN8" type="Sprite2D" parent="Old map"]
+position = Vector2(416, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN9" type="Sprite2D" parent="Old map"]
+position = Vector2(480, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN10" type="Sprite2D" parent="Old map"]
+position = Vector2(544, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN11" type="Sprite2D" parent="Old map"]
+position = Vector2(608, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN12" type="Sprite2D" parent="Old map"]
+position = Vector2(672, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN13" type="Sprite2D" parent="Old map"]
+position = Vector2(736, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN14" type="Sprite2D" parent="Old map"]
+position = Vector2(800, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN15" type="Sprite2D" parent="Old map"]
+position = Vector2(864, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN16" type="Sprite2D" parent="Old map"]
+position = Vector2(928, 608)
+texture = ExtResource("16_jq8a3")
+
+[node name="TileGrassTransitionN17" type="Sprite2D" parent="Old map"]
+position = Vector2(992, 608)
+texture = ExtResource("16_jq8a3")

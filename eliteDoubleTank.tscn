@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgxjuc16h357v"]
+
+[ext_resource type="PackedScene" uid="uid://iygly3hgx3dh" path="res://blackTankPanel.tscn" id="1_hwa1q"]
+[ext_resource type="Texture2D" uid="uid://dr1hohcrf3y1l" path="res://Assets/Tanks/tank_bigRed.png" id="2_x2x1c"]
+
+[node name="ColorRect" instance=ExtResource("1_hwa1q")]
+
+[node name="TankDark" parent="Panel" index="0"]
+texture = ExtResource("2_x2x1c")
+
+[node name="Price Tag" parent="Panel" index="1"]
+text = "4000$"

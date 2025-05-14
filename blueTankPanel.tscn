@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0troudbkvsoe"]
+
+[ext_resource type="PackedScene" uid="uid://iygly3hgx3dh" path="res://blackTankPanel.tscn" id="1_be4jc"]
+[ext_resource type="Texture2D" uid="uid://b8op6w6yu3t56" path="res://Assets/Tanks/tank_blue.png" id="2_sesi6"]
+
+[node name="ColorRect" instance=ExtResource("1_be4jc")]
+
+[node name="TankDark" parent="Panel" index="0"]
+texture = ExtResource("2_sesi6")
