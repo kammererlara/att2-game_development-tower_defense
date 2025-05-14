@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dtmb8agf1lyrf" path="res://Assets/Tiles/tileGrass_transitionN.png" id="16_jq8a3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo25w"]
-size = Vector2(38.4, 21.6)
+size = Vector2(34.1333, 21.6)
 
 [sub_resource type="Curve2D" id="Curve2D_vo25w"]
 _data = {
@@ -29,48 +29,6 @@ point_count = 6
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Game" parent="." instance=ExtResource("1_exulw")]
-script = ExtResource("2_vo25w")
-
-[node name="Map" type="TileMapLayer" parent="Game"]
-
-[node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
-visible = false
-position = Vector2(752, 208)
-
-[node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
-visible = false
-position = Vector2(-392, -144)
-
-[node name="Map2" type="TileMap" parent="Game"]
-format = 2
-
-[node name="Map3" type="Area2D" parent="Game"]
-position = Vector2(808, -448)
-scale = Vector2(30, 30)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Map3"]
-visible = false
-position = Vector2(-7.73333, 25.7333)
-shape = SubResource("RectangleShape2D_vo25w")
-
-[node name="Path2D" type="Path2D" parent="Game/Map3"]
-position = Vector2(-26.9333, 14.9333)
-scale = Vector2(0.0297777, 0.0333333)
-curve = SubResource("Curve2D_vo25w")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
-position = Vector2(1110.45, 544.002)
-rotation = 3.14159
-
-[node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
-visible = false
-position = Vector2(752, 208)
-
-[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
-visible = false
-script = ExtResource("5_pptqa")
 
 [node name="Container" parent="." instance=ExtResource("7_8j1l6")]
 layout_mode = 0
@@ -727,3 +685,40 @@ texture = ExtResource("16_jq8a3")
 [node name="TileGrassTransitionN17" type="Sprite2D" parent="Old map"]
 position = Vector2(992, 608)
 texture = ExtResource("16_jq8a3")
+
+[node name="Game" parent="." instance=ExtResource("1_exulw")]
+script = ExtResource("2_vo25w")
+
+[node name="Map" type="TileMapLayer" parent="Game"]
+
+[node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
+position = Vector2(752, 208)
+
+[node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
+position = Vector2(-392, -144)
+
+[node name="Map2" type="TileMap" parent="Game"]
+format = 2
+
+[node name="Map3" type="Area2D" parent="Game"]
+position = Vector2(808, -448)
+scale = Vector2(30, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Map3"]
+position = Vector2(-9.86666, 25.7333)
+shape = SubResource("RectangleShape2D_vo25w")
+
+[node name="Path2D" type="Path2D" parent="Game/Map3"]
+position = Vector2(-26.9333, 14.9333)
+scale = Vector2(0.0297777, 0.0333333)
+curve = SubResource("Curve2D_vo25w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
+position = Vector2(1110.45, 544.002)
+rotation = 3.14159
+
+[node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
+position = Vector2(752, 208)
+
+[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
+script = ExtResource("5_pptqa")
