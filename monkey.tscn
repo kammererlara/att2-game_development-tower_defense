@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsx63d1iqjjxq"]
+[gd_scene load_steps=4 format=3 uid="uid://dsx63d1iqjjxq"]
 
+[ext_resource type="Script" uid="uid://b5boh0kui14qa" path="res://animal.gd" id="1_0500s"]
 [ext_resource type="Texture2D" uid="uid://ctn6wv3eur41t" path="res://Assets/Animals/monkey.png" id="1_to385"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0500s"]
 radius = 24.0
 
 [node name="Monkey" type="Area2D"]
+script = ExtResource("1_0500s")
 
 [node name="Monkey" type="Sprite2D" parent="."]
 scale = Vector2(0.162338, 0.188716)

@@ -11,12 +11,10 @@ func _physics_process(delta: float) -> void:
 	cooldown += delta
 	find_target()
 	if cooldown > 1 && target_animal:
-		print(target_animal)
 		shoot()
 		cooldown = 0
 	
 func shoot():
-	print('Shoot')
 	var bullet = BULLET.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.position = self.position
