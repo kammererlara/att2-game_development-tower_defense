@@ -1,7 +1,7 @@
 extends Area2D
 class_name Bullet
 
-var speed = 1000
+@export var speed = 10
 var target: Node2D
 var direction: Vector2
 
@@ -17,7 +17,7 @@ func setup(origin: Vector2, target_node: Node2D):
 		rotation = direction.angle() + deg_to_rad(270)
 
 func _process(delta: float) -> void:
-	position += direction * speed * delta
+	position += direction * speed * 100 * delta
 
 func _on_area_entered(area):
 	if area is Animal:

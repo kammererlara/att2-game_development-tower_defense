@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuivuojkj2y6x"]
+
+[ext_resource type="Script" uid="uid://b5boh0kui14qa" path="res://animal.gd" id="1_0500s"]
+[ext_resource type="Texture2D" uid="uid://bld2q8isy88y" path="res://Assets/Animals/giraffe.png" id="2_dod1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0500s"]
+radius = 24.0
+
+[node name="Giraffe" type="Area2D"]
+script = ExtResource("1_0500s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0500s")
+
+[node name="Giraffe" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -4)
+scale = Vector2(0.186275, 0.175466)
+texture = ExtResource("2_dod1g")

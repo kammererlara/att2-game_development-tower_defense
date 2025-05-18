@@ -697,7 +697,6 @@ position = Vector2(752, 208)
 
 [node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
 position = Vector2(-392, -144)
-speed = 15
 
 [node name="Map2" type="TileMap" parent="Game"]
 format = 2
@@ -722,23 +721,20 @@ rotation = 3.14159
 [node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
 position = Vector2(752, 208)
 
-[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
+[node name="Monkey" parent="." instance=ExtResource("4_w4b7g")]
 position = Vector2(-208, 96)
 
-[node name="Giraffe" parent="Game" instance=ExtResource("16_pl1ei")]
+[node name="Giraffe" parent="." instance=ExtResource("16_pl1ei")]
 position = Vector2(-152, -80)
 speed = 3.0
-lives = 3
 
-[node name="Elephant" parent="Game" instance=ExtResource("17_pl1ei")]
+[node name="Elephant" parent="." instance=ExtResource("17_pl1ei")]
 position = Vector2(624, 1104)
-speed = 4.0
-lives = 5
 
-[node name="SpawnTimer" type="Timer" parent="Game"]
+[node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="NewAnimalSpawnTimer" type="Timer" parent="Game"]
+[node name="NewAnimalSpawnTimer" type="Timer" parent="."]
 wait_time = 20.0
 
-[connection signal="timeout" from="Game/SpawnTimer" to="Game" method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="Game/NewAnimalSpawnTimer" to="Game" method="_on_new_animal_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="Game" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="NewAnimalSpawnTimer" to="Game" method="_on_new_animal_spawn_timer_timeout"]
