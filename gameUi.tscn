@@ -687,8 +687,6 @@ texture = ExtResource("16_jq8a3")
 [node name="Game" parent="." instance=ExtResource("1_exulw")]
 script = ExtResource("2_vo25w")
 
-[node name="Map" type="TileMapLayer" parent="Game"]
-
 [node name="Tower" parent="Game" instance=ExtResource("2_bpjuw")]
 top_level = true
 position = Vector2(752, 208)
@@ -696,9 +694,6 @@ position = Vector2(752, 208)
 [node name="BulletBlue" parent="Game" instance=ExtResource("3_pptqa")]
 position = Vector2(-392, -144)
 speed = 15
-
-[node name="Map2" type="TileMap" parent="Game"]
-format = 2
 
 [node name="Map3" type="Area2D" parent="Game"]
 position = Vector2(808, -448)
@@ -716,9 +711,6 @@ curve = SubResource("Curve2D_vo25w")
 [node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
 position = Vector2(1002.99, 544.002)
 rotation = 3.14159
-
-[node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
-position = Vector2(752, 208)
 
 [node name="SpawnTimer" type="Timer" parent="Game"]
 
