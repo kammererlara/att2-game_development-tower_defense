@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvpgdatrnvo0u"]
+[gd_scene load_steps=5 format=3 uid="uid://dvpgdatrnvo0u"]
 
 [ext_resource type="Script" uid="uid://1vkppoym1pky" path="res://tower.gd" id="1_k1sas"]
 [ext_resource type="Texture2D" uid="uid://bw1fx2rslebhf" path="res://Assets/Tanks/tankBody_dark.png" id="2_vedim"]
+[ext_resource type="Texture2D" uid="uid://7ge3ipolu1sb" path="res://Assets/Tanks/tankDark_barrel1.png" id="3_stebd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stebd"]
 size = Vector2(38, 36)
@@ -16,3 +17,7 @@ shape = SubResource("RectangleShape2D_stebd")
 texture = ExtResource("2_vedim")
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="TankDarkBarrel1" type="Sprite2D" parent="."]
+texture = ExtResource("3_stebd")
+offset = Vector2(0, 10)

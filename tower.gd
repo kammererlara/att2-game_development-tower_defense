@@ -4,15 +4,19 @@ class_name Tower
 const BULLET = preload("res://bullet.tscn")
 var target_animal: Node2D
 var cooldown = 0
+
 @onready var control: Control = $"../.."
 @onready var map: Area2D = $"../Map3"
+@onready var tank_barrel: Sprite2D = $TankDarkBarrel1
 
 func _physics_process(delta: float) -> void:
 	cooldown += delta
 	find_target()
-	if cooldown > 1 && target_animal:
-		shoot()
-		cooldown = 0
+	if target_animal:
+		rotate_barrel_towards_target(delta)
+		if cooldown > 2:
+			shoot()
+			cooldown = 0
 	
 func shoot():
 	var bullet = BULLET.instantiate()
@@ -27,3 +31,12 @@ func find_target():
 		if area is Animal:
 			target_animal = area
 			return
+
+func rotate_barrel_towards_target(delta):
+	if not tank_barrel or not target_animal:
+		return
+
+	var direction_to_target = (target_animal.global_position - tank_barrel.global_position).normalized()
+	var target_angle = direction_to_target.angle() + deg_to_rad(270) # +90 Grad, wenn 0 Grad nach rechts zeigt und Rohr nach oben
+	var rotation_speed = 5.0 # Anpassen für schnellere/langsamere Drehung
+	tank_barrel.rotation = lerp_angle(tank_barrel.rotation, target_angle, delta * rotation_speed)
