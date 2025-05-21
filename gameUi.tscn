@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cf75ya45p20rk"]
+[gd_scene load_steps=17 format=3 uid="uid://cf75ya45p20rk"]
 
 [ext_resource type="PackedScene" uid="uid://2e0meemxqr1k" path="res://game.tscn" id="1_exulw"]
 [ext_resource type="PackedScene" uid="uid://dvpgdatrnvo0u" path="res://tower.tscn" id="2_bpjuw"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b67wqghjkmdqx" path="res://Assets/Tiles/tileSand_roadNorth.png" id="3_fqnr4"]
 [ext_resource type="PackedScene" uid="uid://bllg4o4c6jrxc" path="res://bullet.tscn" id="3_pptqa"]
 [ext_resource type="Texture2D" uid="uid://dgj7ok3bp1ktn" path="res://Assets/Tiles/tileSand_roadCornerUL.png" id="4_p0bfn"]
-[ext_resource type="PackedScene" uid="uid://dsx63d1iqjjxq" path="res://monkey.tscn" id="4_w4b7g"]
 [ext_resource type="Texture2D" uid="uid://cjsnh1b4ty17y" path="res://Assets/Tiles/tileSand_roadEast.png" id="5_16gmt"]
 [ext_resource type="PackedScene" uid="uid://bvem47u1iqgec" path="res://sidemenu.tscn" id="7_8j1l6"]
 [ext_resource type="Texture2D" uid="uid://pe5kl6weg70v" path="res://Assets/Tiles/tileSand1.png" id="7_pptqa"]
@@ -15,17 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://b45qkb12wqw1g" path="res://Assets/Tiles/tileSand_roadCornerLR.png" id="14_pl1ei"]
 [ext_resource type="Texture2D" uid="uid://c3neawwvnd2i6" path="res://Assets/Tiles/tileGrass_transitionS.png" id="15_0lip6"]
 [ext_resource type="Texture2D" uid="uid://dtmb8agf1lyrf" path="res://Assets/Tiles/tileGrass_transitionN.png" id="16_jq8a3"]
-[ext_resource type="PackedScene" uid="uid://cuivuojkj2y6x" path="res://giraffe.tscn" id="16_pl1ei"]
-[ext_resource type="PackedScene" uid="uid://cf4g1ttv260mh" path="res://elephant.tscn" id="17_pl1ei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo25w"]
 size = Vector2(34.1333, 21.6)
 
 [sub_resource type="Curve2D" id="Curve2D_vo25w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1110.45, 544.002, 0, 0, 0, 0, 116.417, 544.002, 0, 0, 0, 0, 116.417, 352.001, 0, 0, 0, 0, 1038.81, 352.001, 0, 0, 0, 0, 1038.81, 160.001, 0, 0, 0, 0, -0.00109317, 160.001)
+"points": PackedVector2Array(0, 0, 0, 0, 1002.99, 544.002, 0, 0, 0, 0, 116.417, 544.002, 0, 0, 0, 0, 116.417, 352.001, 0, 0, 0, 0, 1038.81, 352.001, 0, 0, 0, 0, 1038.81, 160.001, 0, 0, 0, 0, -0.00109317, 160.001, 0, 0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 7
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -716,24 +713,11 @@ scale = Vector2(0.0297777, 0.0333333)
 curve = SubResource("Curve2D_vo25w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Game/Map3/Path2D"]
-position = Vector2(1110.45, 544.002)
+position = Vector2(1002.99, 544.002)
 rotation = 3.14159
 
 [node name="Tower2" parent="Game" instance=ExtResource("2_bpjuw")]
 position = Vector2(752, 208)
-
-[node name="Monkey" parent="Game" instance=ExtResource("4_w4b7g")]
-position = Vector2(-208, 96)
-
-[node name="Giraffe" parent="Game" instance=ExtResource("16_pl1ei")]
-position = Vector2(-152, -80)
-speed = 3.0
-lives = 3
-
-[node name="Elephant" parent="Game" instance=ExtResource("17_pl1ei")]
-position = Vector2(624, 1104)
-speed = 4.0
-lives = 5
 
 [node name="SpawnTimer" type="Timer" parent="Game"]
 

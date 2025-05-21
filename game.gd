@@ -25,11 +25,12 @@ func _on_new_animal_spawn_timer_timeout() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	var data = retrieve_spawning_animaldata()
+	print("Timer timeout - Instanzierung der Tiere")
 	spawn_animals(data)
 	spawn_timer.start()
 
 func spawn_animals(data):
-	print(data)
+	print("Instanzierung der Tiere:", data)
 	for animal in data:
 		var new_animal
 		if animal[0] == "Monkey":
